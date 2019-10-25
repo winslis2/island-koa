@@ -8,14 +8,10 @@ router.post('/v1/:id/book/latest', async(ctx, next)=>{
     const query = ctx.request.query
     const header = ctx.request.header
     const body = ctx.request.body
-  
-    const v = await new PositiveIntegerValidator().validate(ctx)
+    const sequelize = new Sequelize(hostname, )
+    // const v = await new PositiveIntegerValidator().validate(ctx)
 
-    // if (true) {
-    //     const error = new parameterException()
-    //     throw error   
-    // }
-
+    // const id = v.get('params.id',false)
 
     ctx.body = {key: 'book'}
 })
