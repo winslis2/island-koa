@@ -4,10 +4,17 @@ const  catchExcepiton = async(ctx, next)=>{
     try {
         await next()
     } catch (error) {
-        if(global.config.env == 'dev') {
-            throw error
-        }
-        if(error instanceof HttpException){
+
+        const isHttpException = error instanceof HttpException
+    
+        // const isDev = global.config.env
+        // console.log(isDev)
+
+
+        // if(isDev && !isHttpException) {
+        //     throw error
+        // }
+        if(isHttpException){
             ctx.body = {
                 msg:error.message,
                 requestUrl:`${ctx.method} ${ctx.path}`,
