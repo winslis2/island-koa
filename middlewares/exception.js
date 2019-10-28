@@ -5,15 +5,12 @@ const  catchExcepiton = async(ctx, next)=>{
         await next()
     } catch (error) {
 
-        const isHttpException = error instanceof HttpException
-    
-        // const isDev = global.config.env
-        // console.log(isDev)
-
-
-        // if(isDev && !isHttpException) {
-        //     throw error
-        // }
+        const isHttpException = error instanceof HttpException  
+        const isDev = global.config.env
+  
+        if(isDev && !isHttpException) {
+            throw error
+        }
         if(isHttpException){
             ctx.body = {
                 msg:error.message,
