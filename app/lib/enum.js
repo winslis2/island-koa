@@ -14,4 +14,10 @@ const LoginTypeEnum = {
     isThisType
 }
 
-module.exports = {LoginTypeEnum}
+const AuthScopeEmum = {
+    USER:8,
+    ADMIN:16,
+    SUPER_ADMIN:32
+}
+
+module.exports = {LoginTypeEnum,AuthScopeEmum}

@@ -4,6 +4,7 @@ const {AuthFailedException,ParameterException} = require('../../../core/httpExce
 const {LoginTypeEnum} = require('../../lib/enum')
 const {Token:TokenModel} = require('../../models/token')
 const {generateToken} = require('../../../core/util')
+const {AuthScopeEmum} = require("./../../lib/enum")
 
 const router = new Router({prefix:'/v1/token'})
 
@@ -27,7 +28,7 @@ router.post('/', async(ctx, next)=>{
 
 async function  emailLogin(account, secret) {
     const user = await TokenModel.verifyEmailPassword(account,secret)
-    const token =  generateToken(user.id, 2)
+    const token =  generateToken(user.id, 8)
     return token
 }
 

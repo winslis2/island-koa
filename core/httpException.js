@@ -27,7 +27,7 @@ class Success extends HttpException {
 }
 
 // 验证失败异常
-class AuthFailedException extends HttpException{
+class AuthFailedException extends HttpException {
     constructor(msg= '授权失败', errorCode) {
         super()
         this.message = msg
@@ -36,4 +36,20 @@ class AuthFailedException extends HttpException{
     }
 }
 
-module.exports = {HttpException,ParameterException, Success, AuthFailedException}
+//禁止访问
+class ForbiddenException extends HttpException {
+    constructor(msg= '禁止访问', errorCode) {
+        super()  
+        this.message = msg
+        this.errorCode = 10006
+        this.status = 403
+        console.log(ForbiddenException)
+    }
+}
+module.exports = {
+    HttpException,
+    ParameterException,
+    Success,
+    AuthFailedException,
+    ForbiddenException
+}
